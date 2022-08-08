@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminPanel</title>
+</head>
+<body style="background-color: gray;" >
+    <hr>
+    <form action="/logout" method="post">
+      <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
+    </form>
+    <hr>
+    <h1>Adminisztrációs felület</h1>
+    <hr>
+
+    <h2>Fizetések: </h2>
+    <div id="paymentsDiv"></div>
+    <hr>
+
+    <h2>Összes kifizetés</h2>
+    <div id="allPaymentDiv"></div>
+    <hr>
+
+
+    <h2>Bejelentkezési kulcsok:</h2>
+    <div id="loginTokensList"></div>
+    <hr>
+
+    <h2>Felhasználók:</h2>
+    <div id="userList"></div>
+    <hr>
+
+    <h2>Új felhasználó hozzáadása:</h2>
+    <div id="userRegisterBox">
+        <div>
+          <label for="username">Username:</label>
+          <input type="username" id="username" name="username" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+          <label for="roleid">Role:</label>
+          <input type="text" id="role" name="role" required>
+        </div>
+        <button type="button" id="addNewUserButton">Register user</button>
+    </div>
+    <hr>
+
+    <h2>Rangok:</h2>
+    <div id="rolesList"></div>
+    <hr>
+
+    <h2>Új rang hozzáadása:</h2>
+    <div id="newRoleBox">
+        <div>
+          <label for="roleName">Name:</label>
+          <input type="text" id="roleName" name="roleName" required>
+        </div>
+        <div>
+          <label for="isAdmin">isAdmin:</label>
+          <input type="checkbox" id="isAdmin" name="isAdmin" required>
+        </div>
+        <div>
+          <label for="isWaiter">isWaiter:</label>
+          <input type="checkbox" id="isWaiter" name="isWaiter" required>
+        </div>
+        <div>
+          <label for="isBartender">isBartender:</label>
+          <input type="checkbox" id="isBartender" name="isBartender" required>
+        </div>
+        <button type="button" id="addNewRoleButton">Add new role</button>
+    </div>
+    <hr>
+
+    <h2>Termékek:</h2>
+    <div id="productList"></div>
+    <hr>
+
+    <h2>Új termék hozzáadása:</h2>
+    <div id="newProductBox">
+        <div>
+          <label for="productName">Name:</label>
+          <input type="text" id="productName" name="productName" required>
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input type="text" id="productPrice" name="productPrice" required>
+        </div>
+        <button type="button" id="addNewProductButton">Add new product</button>
+    </div>
+    <hr>
+
+
+    <h2>Asztalok:</h2>
+    <div id="tableList"></div>
+    <hr>
+
+    <h2>Új asztal hozzáadása:</h2>
+    <div id="newProductBox">
+        <div>
+          <label for="tableName">Name:</label>
+          <input type="text" id="tableName" name="tableName" required>
+        </div>
+        <button type="button" id="addNewTableButton">Add new table</button>
+    </div>
+    <hr>
+
+    <h2>Rendelések:</h2>
+    <div id="ordersList"></div>
+    <hr>
+
+    <h2>Rendelés állapotok:</h2>
+    <div id="orderStatesList"></div>
+    <hr>
+
+    
+
+    <script src="ws-states.js"></script> 
+    <script type="module" src="/public/js/pages/adminPanel.js"></script>
+</body>
+</html>

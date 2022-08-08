@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderDelivery</title>
+</head>
+<body style="background-color: gray;">
+    <hr>
+    <form action="/logout" method="post">
+        <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
+    </form>
+    <hr>
+    <h1>Rendelés kézbesítés</h1>
+    <hr>
+    <h2>Kiszállítandó rendelések:</h2>
+    <div id="deliverableOrdersDiv"></div>
+    <hr>
+    <h2>Kiszállított rendelések:</h2>
+    <div id="deliveredOrdersDiv"></div>
+    <hr>
+
+    <script src="ws-states.js"></script> 
+    <script type="module" src="/public/js/pages/orderDelivery.js"></script>
+</body>
+</html>

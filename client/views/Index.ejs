@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+</head>
+<body style="background-color: gray;">
+    <hr>
+    <form action="/logout" method="post">
+        <button type="submit">Kijelentkezés</button>
+    </form>
+    <hr>
+    <h1>Főoldal</h1>
+    <hr>
+    <h2>Felhasználó:
+    <div id="loggedUserName"></div> </h2>
+
+    <h2>Rang:
+    <div id="loggedUserRole"></div>   </h2>   
+    <hr>
+
+    <h2>Felületek: </h2>
+    <hr>
+    <ul>
+        <li><a href="/admin-panel">Admin panel</a></li><br>
+
+        <li><a href="/order-manager">Rendelés felütés</a></li><br>
+
+        <li><a href="/pay">Fizetés</a></li><br>
+
+        <li><a href="/order-maker">Rendelés készítő</a></li><br>
+
+        <li><a href="/order-delivery">Rendelés kézbesítés</a></li>
+    </ul>
+    <hr>
+
+    
+
+    <script src="ws-states.js"></script>
+    <script type="module" src="/public/js/pages/homepage.js"></script>
+</body>
+</html>
