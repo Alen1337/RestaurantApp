@@ -15,7 +15,7 @@ const TokenHandler = require("../server/main/TokenHandler").deleteAllTokens
 
 //Init stuffs
 console.log("------------------------------------------------------------------------")
-logger("Starting server...")
+logger("Starting server....")
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
