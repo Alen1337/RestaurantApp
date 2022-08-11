@@ -4,4 +4,7 @@
 - clone 
 - npm i
 - npm run dev
-- localhost:8000
+- localhost:5000
+- login with:
+    - [Username]: testuser
+    - [Password]: testpass
