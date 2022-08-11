@@ -5,26 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrderMaker</title>
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body style="background-color: gray;" >
-    <hr>
-    <form action="/logout" method="post">
-        <button type="submit">Kijelentkezés</button> - <a href="/order-manager">Rendelés felütés</a><br>
-    </form>
+<body>
+    <div id="header"></div>
+    <div id="navbar"></div>
+    <div class="content-container">
+        <hr>
+        <form action="/logout" method="post">
+            <button type="submit">Kijelentkezés</button> - <a href="/order-manager">Rendelés felütés</a><br>
+        </form>
+        
+        <hr>
     
-    <hr>
+        <h1>Rendelés készítő</h1>
+        <hr>
+        <h2>Rendelések: </h2>
+        <div id="ordersToAccept"></div>
+        <hr>
+        <h2>Elfogadott rendelések:</h2>
+        <div id="acceptedOrders"></div>
+        <hr>
+        <h2>Kész rendelések:</h2>
+        <div id="finishedOrders"></div>
+        <hr>
 
-    <h1>Rendelés készítő</h1>
-    <hr>
-    <h2>Rendelések: </h2>
-    <div id="ordersToAccept"></div>
-    <hr>
-    <h2>Elfogadott rendelések:</h2>
-    <div id="acceptedOrders"></div>
-    <hr>
-    <h2>Kész rendelések:</h2>
-    <div id="finishedOrders"></div>
-    <hr>
+    </div>
+
 
 
     <script src="ws-states.js"></script>

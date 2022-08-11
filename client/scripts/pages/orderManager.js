@@ -8,6 +8,9 @@ import * as DeleteVirtualTableButton from "/public/js/ALib/components/buttons/De
 import * as MoveOrdersButton from "/public/js/ALib/components/buttons/MoveOrderButton.js"
 import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
 import * as MoveOrderTableSelector from "/public/js/ALib/components/main/MoveOrderTableSelector.js"
+import * as RoundFinishButton from "/public/js/Alib/components/buttons/RoundFinishButton.js"
+import * as Navbar from "/public/js/ALib/components/main/Navbar.js"
+import * as HeaderBar from "/public/js/ALib/components/main/HeaderBar.js"
 
 const searchbar = document.getElementById("searchbar");
 const matches = document.getElementById("matches")
@@ -21,15 +24,19 @@ const deleteVirtualTableButtonDiv = document.getElementById("deleteVirtualTableB
 const deliverModeSpan = document.getElementById("deliverModeSpan")
 const moveOrdersButtonDiv = document.getElementById("moveOrdersButtonDiv")
 const selectTableToMoveDiv = document.getElementById("selectTableToMoveDiv")
+const roundFinishButtonDiv = document.getElementById("roundFinishButtonDiv")
+const commentBar = document.getElementById("commentbar")
 
 function init() {
     WSS.init(TARGET.ORDER_MANAGER)
 
     searchbar.addEventListener('keyup', function() { WSS.sendSearch(searchbar.value) })
     WSS.getSocket().addEventListener('open', (event) => { 
+        console.log(WSS.getSocket())
         WSS.sendSearch(searchbar.value)
         WSS.getAllTable()
         WSS.getAllOrder()
+        HeaderBar.init(WSS)
     })
     WSS.getSocket().addEventListener('message', function (event) {
         let dataParsed = JSON.parse(event.data)
@@ -43,7 +50,7 @@ function init() {
     })
 
     TableSelector.init(WSS, tableList, selectedTableDiv)
-    ProductSearch.init(matches, deliverModeSpan)
+    ProductSearch.init(matches, deliverModeSpan, commentBar)
     PayButton.init(payButtonDiv)
     PayButton.render()
     TableIsFreeButton.init(setTableIsFreeButton)
@@ -52,6 +59,10 @@ function init() {
     DeleteVirtualTableButton.render()
     MoveOrdersButton.init(moveOrdersButtonDiv, selectTableToMoveDiv)
     MoveOrdersButton.render()
+    RoundFinishButton.init(roundFinishButtonDiv)
+    RoundFinishButton.render()
+
+    Navbar.render()
 }
 
 function WSSuccessRes(res) {
@@ -65,6 +76,7 @@ function WSSuccessRes(res) {
         ProductSearch.render(res.msg)
     }
     else if(res.action === REQ_ACTION.INSERT_ORDER) {
+        commentBar.value = ""
         PopupMSG.init()
         PopupMSG.render(res.msg)
     }
@@ -76,10 +88,12 @@ function WSSuccessRes(res) {
         DeleteVirtualTableButton.render()
         MoveOrdersButton.render()
         MoveOrderTableSelector.switchMode(false)
+        RoundFinishButton.render()
     }
     else if(res.action === REQ_ACTION.DELETE_VIRTUAL_TABLE)  {
         TableSelector.resetSelectedTable()
     }
+    else if(res.action === REQ_ACTION.DISPLAY_USER) HeaderBar.setUser(res.msg)
 }
 
 function WSErrorRes(res) {

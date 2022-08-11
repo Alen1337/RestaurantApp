@@ -12,6 +12,7 @@ const OrderSchema = new mongoose.Schema({
   hasToDeliver: Boolean,
   round: Number,
   date: Number,
+  comment: String
 });
 
 const Order = mongoose.model('Order', OrderSchema);

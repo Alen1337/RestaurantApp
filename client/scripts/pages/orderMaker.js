@@ -2,6 +2,8 @@ import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
 import * as NonAcceptedOrders from "/public/js/Alib/components/main/NonAcceptedOrders.js"
 import * as AcceptedOrders from "/public/js/Alib/components/main/AcceptedOrders.js"
 import * as FinishedOrders from "/public/js/Alib/components/main/FinishedOrders.js"
+import * as Navbar from "/public/js/ALib/components/main/Navbar.js"
+import * as HeaderBar from "/public/js/ALib/components/main/HeaderBar.js"
 
 const ordersToAcceptElement = document.getElementById("ordersToAccept")
 const acceptedOrdersElement = document.getElementById("acceptedOrders")
@@ -13,6 +15,7 @@ function init() {
         WSS.getNonAcceptedOrders()
         WSS.getAcceptedOrders()
         WSS.getFinisedOrders()
+        HeaderBar.init(WSS)
     })
 
     WSS.getSocket().addEventListener('message', function (event) {
@@ -27,12 +30,14 @@ function init() {
     AcceptedOrders.init(acceptedOrdersElement)
     FinishedOrders.init(finishedOrdersElement)
 
+    Navbar.render()
 }
 
 function WSSuccessRes(res) {
     if(res.action === REQ_ACTION.NON_ACCEPTED_ORDERS) NonAcceptedOrders.render(res.msg)
     else if(res.action === REQ_ACTION.ACCEPTED_ORDERS) AcceptedOrders.render(res.msg)
     else if(res.action === REQ_ACTION.FINISHED_ORDERS) FinishedOrders.render(res.msg)
+    else if(res.action === REQ_ACTION.DISPLAY_USER) HeaderBar.setUser(res.msg)
 }
 
 function WSErrorRes(res) {

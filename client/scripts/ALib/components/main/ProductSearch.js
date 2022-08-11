@@ -4,10 +4,13 @@ import * as NewOrderButton from "/public/js/ALib/components/buttons/NewOrderButt
 let htmlElement
 let deliverModeElement
 let deliverMode = DELIVER_MODE.TABLE_SERVICE
+let commentBar
+let round = 1 //TODO
 
-export function init(_htmlElement, _deliverModeElement) {
+export function init(_htmlElement, _deliverModeElement, _commentBar) {
     htmlElement = _htmlElement
     deliverModeElement = _deliverModeElement
+    commentBar = _commentBar
 }
 
 export function render(products) {
@@ -65,7 +68,12 @@ function setupButton(products) {
     for (let i = 0; i < products.length; i++) {
         const productButton = document.getElementById(ELEMENT.SRB_PRODUCT_ID + products[i].productid)
         productButton.addEventListener('click', function(event) {
-            WSS.sendOrder(products[i].productid, TableSelector.getSelectedTableID(), deliverMode)
+            WSS.sendOrder(products[i].productid, 
+                TableSelector.getSelectedTableID(), 
+                deliverMode, 
+                commentBar.value,
+                round
+                )
         })
     }
 }

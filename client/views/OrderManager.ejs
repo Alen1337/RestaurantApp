@@ -5,34 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body style="background-color: gray;" >
-    <hr>
-    <form action="/logout" method="post">
-        <button type="submit">Kijelentkezés</button> - <a href="/order-maker">Rendelés készítő</a><br>
-    </form>
+<body>
+    <div id="header"></div>
+    <div id="navbar"></div>
+    <div class="content-container">
+        <hr>
+        <form action="/logout" method="post">
+            <button type="submit">Kijelentkezés</button> - <a href="/order-maker">Rendelés készítő</a><br>
+        </form>
+        
+        <hr>
+        <h2>Asztal választás:</h2>
+        <button type="button" id="newVirtualTableButton">Virtuális asztal hozzáadása</button>
+        <div id="tableList"></div>
+        <hr>
+        <h3>Kiválasztott asztal: <span id="selectedTable"></span></h3>
+        <div id="payButtonDiv"></div>
+        <div id="setTableIsfreeButtonDiv"></div> 
+        <div id="roundFinishButtonDiv"></div> 
+        <div id="deleteVirtualTableButtonDiv"></div> 
+        <div id="moveOrdersButtonDiv"></div> 
+        <div id="selectTableToMoveDiv"></div> 
+        <hr>
+        <h3>Tételek:</h3>
+        <div id="ordersByTable"></div>
+        <hr>
+        <h2>Kiviteli mód: <span id="deliverModeSpan"></span> </h2>
+        <h2>Keresés: <input type="text" id="searchbar" name="searchbar"></h2>
+        <h2>Megjegyzés a rendeléshez: <input type="text" id="commentbar" name="commentbar"></h2>
+        <h2>Találatok:</h2>
+        <div id="matches"></div>
+        <hr>
+    </div>
     
-    <hr>
-    <h2>Asztal választás:</h2>
-    <button type="button" id="newVirtualTableButton">Virtuális asztal hozzáadása</button>
-    <div id="tableList"></div>
-    <hr>
-    <h3>Kiválasztott asztal: <span id="selectedTable"></span></h3>
-    <div id="payButtonDiv"></div>
-    <div id="setTableIsfreeButtonDiv"></div> 
-    <div id="deleteVirtualTableButtonDiv"></div> 
-    <div id="moveOrdersButtonDiv"></div> 
-    <div id="selectTableToMoveDiv"></div> 
-    <hr>
-    <h3>Tételek:</h3>
-    <div id="ordersByTable"></div>
-    <hr>
-    <h2>Kiviteli mód: <span id="deliverModeSpan"></span> </h2>
-    <h2>Keresés: <input type="text" id="searchbar" name="searchbar"></h2>
-    
-    <h2>Találatok:</h2>
-    <div id="matches"></div>
-    <hr>
     <script src="ws-states.js"></script>
     <script type="module" src="/public/js/pages/orderManager.js"></script>
     

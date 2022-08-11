@@ -3,6 +3,7 @@ import * as LessOrder from "/public/js/ALib/components/objects/LessOrder.js"
 import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
 import * as TableSelector from "/public/js/ALib/components/main/TableSelector.js"
 import * as Move1OrderButton from "/public/js/ALib/components/buttons/Move1OrderButton.js"
+import * as DeleteOrderButton from "/public/js/ALib/components/buttons/DeleteOrderButton.js"
 import * as MoveOrderTableSelector from "/public/js/ALib/components/main/MoveOrderTableSelector.js"
 
 let outputElement
@@ -31,7 +32,10 @@ function renderOrderList(orders) {
     for (let i = 0; i < resLen; i++) {
         if(MoreDetailMode) out += `<li>${Order.render(orders[i])}`
         else out += `<li>${LessOrder.render(orders[i])}`
-        out += Move1OrderButton.render(orders[i].orderid) + "</li>"
+        out += Move1OrderButton.render(orders[i].orderid)
+        if(orders[i].state === ORDER_STATE.SAVED)out += DeleteOrderButton.render(orders[i].orderid)
+
+        out+= "</li>"
     }
     out+="</ol>"
     outputElement.innerHTML = out
@@ -47,6 +51,14 @@ function renderOrderList(orders) {
             MoveOrderTableSelector.setOrder(orders[i])
             MoveOrderTableSelector.switchMode(true)
         })
+    }
+
+    for (let i = 0; i < resLen; i++) {
+        if(orders[i].state === ORDER_STATE.SAVED) {
+            document.getElementById(ELEMENT.DELETE_ORDER_BUTTON + orders[i].orderid).addEventListener('click', ()=> {
+                WSS.deleteOrder(orders[i].orderid)
+            })
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+
 let socket 
 let target
 const wss = "ws://localhost:5000"
@@ -21,13 +22,22 @@ export function sendSearch(value) {
         }))
 }
 
-export function sendOrder(productid, tableid, hasToDeliver) {
+export function sendOrder(productid, tableid, hasToDeliver, comment, round) {
     socket.send(JSON.stringify({ 
         target: target, 
         type: REQ_TYPES.POST,
         action: REQ_ACTION.INSERT_ORDER, 
-        order:  { productid, tableid, hasToDeliver }
+        order:  { productid, tableid, hasToDeliver, comment, round }
         }))
+}
+
+export function deleteOrder(orderid) {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.POST,
+        action: REQ_ACTION.DELETE_ORDER,
+        orderid: orderid
+    }))
 }
 
 export function sendNewVirtualTable() {
@@ -158,6 +168,7 @@ export function getDeliveredOrders() {
 }
 
 export function getDisplayUser() {
+    console.log(getSocket())
     socket.send(JSON.stringify({ 
         target: target, 
         type: REQ_TYPES.GET,

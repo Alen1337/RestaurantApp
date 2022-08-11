@@ -141,7 +141,15 @@ const ELEMENT = Object.freeze({
     CHANGE_DELIVER_MODE_BUTTON: "change-deliver-mode-button",
     MOVE_ORDERS_BUTTON: "move-orders-button",
     MOVE_ORDER_BUTTON: "move-order-button orderid:",
-    CHOOSE_TABLE_TO_MOVE_ORDER_BUTTON: "choose-table-to-move-order-button tableid:"
+    CHOOSE_TABLE_TO_MOVE_ORDER_BUTTON: "choose-table-to-move-order-button tableid:",
+    FINISH_ROUND_BUTTON: "finish-round-button",
+    DELETE_ORDER_BUTTON: "delete-order-button orderid:",
+    NAV_ORDER_MANAGER_BUTTON: "nav-order-manager-button",
+    NAV_ORDER_MAKER_BUTTON: "nav-order-maker-button",
+    NAV_ORDER_DELIVERY_BUTTON: "nav-order-delivery-button",
+    NAV_PAY_BUTTON: "nav-pay-button",
+    NAV_ADMIN_PANEL_BUTTON: "nav-admin-panel-button",
+    NAV_LOGOUT_BUTTON: "nav-logout-button"
 })
 
 const DELIVER_MODE = {

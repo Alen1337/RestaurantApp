@@ -36,8 +36,8 @@ async function orderDone(orderid, userid) {
     return res
 }
 
-async function insertOrder(userid, productid, tableid, hasToDeliver) {
-    const res = await database.insertOrder(userid, productid, tableid, hasToDeliver)
+async function insertOrder(userid, productid, tableid, hasToDeliver, comment, round) {
+    const res = await database.insertOrder(userid, productid, tableid, hasToDeliver, comment, round)
     WSBroadcaster.newOrderUpdate()
     return res
 }
@@ -52,8 +52,8 @@ async function undoOrderDone(orderid, userid) {
     return res
 }
 
-async function deleteOrder(orderid) {
-    const res = await database.deleteOrder(orderid) 
+async function deleteOrder(orderid, user) {
+    const res = await database.deleteOrder(orderid, user) 
     WSBroadcaster.deleteOrderUpdate()
     return res
 }

@@ -77,7 +77,7 @@ async function postReq(req) {
     else if(req.action === REQ_ACTION.UNDO_DELIVER_ORDER) 
         return res(req, await OrderAPI.undoDeliverOrder(req.orderid, req.connection.user.userid))
     else if(req.action === REQ_ACTION.DELETE_ORDER) 
-        return res(req, await OrderAPI.deleteOrder(req.orderid))
+        return res(req, await OrderAPI.deleteOrder(req.orderid, req.connection.user))
     else if(req.action === REQ_ACTION.DELETE_USER) 
         return res(req, await UserAPI.deleteUser(req.userid))
     else if(req.action === REQ_ACTION.ORDER_DONE) 
@@ -91,7 +91,10 @@ async function postReq(req) {
             req.connection.user.userid, 
             req.order.productid, 
             req.order.tableid, 
-            req.order.hasToDeliver))
+            req.order.hasToDeliver,
+            req.order.comment,
+            req.order.round
+            ))
     else if(req.action === REQ_ACTION.PAY) 
         return res(req, await PaymentAPI.payForTable(req.tableid, req.connection.user.userid))
     else if(req.action === REQ_ACTION.NEW_VIRTUAL_TABLE) 

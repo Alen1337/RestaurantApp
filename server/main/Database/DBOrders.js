@@ -71,6 +71,7 @@ async function getFinishedOrders(userid) {
                     orderid: 1,
                     hasToDeliver: 1,
                     date: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     productPrice: "$product.price",
@@ -182,6 +183,7 @@ async function getAcceptedOrders(userid) {
                     orderid: 1,
                     hasToDeliver: 1,
                     date: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     productPrice: "$product.price",
@@ -248,6 +250,7 @@ async function getNonAcceptedOrders(userid) {
                     orderid: 1,
                     hasToDeliver: 1,
                     date: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     productPrice: "$product.price",
@@ -265,7 +268,7 @@ async function getNonAcceptedOrders(userid) {
     
 }
 
-async function insertOrder(createdBy, productid, tableid, hasToDeliver) {
+async function insertOrder(createdBy, productid, tableid, hasToDeliver, comment = "Nincs", round) {
     try {
         let product = await Product.findOne({ productid: productid })
         if(!product) return DB_RES.WRONG_PRODUCTID
@@ -281,12 +284,24 @@ async function insertOrder(createdBy, productid, tableid, hasToDeliver) {
         const makerid = MAKING_STATE.NOBODY
         const deliverid = DELIVERY_STATE.NOBODY
         const isPayed = false
-        const round = 1
         const date = Date.now()
         if(lastOrderid.length > 0) orderid = Number(lastOrderid[0].orderid)+1
 
         let state = Object.assign(ORDER_STATE.SAVED)
-        const newOrder = new Order({orderid, createdBy, tableid, productid, orderstateid, makerid, deliverid, isPayed, hasToDeliver, round, date})
+        const newOrder = new Order({
+            orderid, 
+            createdBy, 
+            tableid, 
+            productid, 
+            orderstateid, 
+            makerid, 
+            deliverid, 
+            isPayed, 
+            hasToDeliver, 
+            round, 
+            date,
+            comment
+        })
 
         await newOrder.save()
 
@@ -365,6 +380,7 @@ async function getOrdersByTable(tableid) {
                     orderid: 1,
                     makerid: 1,
                     hasToDeliver: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     deliverName: "$deliveruser.username",
@@ -449,6 +465,7 @@ async function getAllOrder() {
                     orderid: 1,
                     makerid: 1,
                     hasToDeliver: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     deliverName: "$deliveruser.username",
@@ -474,8 +491,11 @@ async function getAllOrder() {
     }
 }
 
-async function deleteOrder(orderid) {
+async function deleteOrder(orderid, user) {
     try {
+        const order = await Order.findOne({orderid: orderid})
+        if(user.roleid !== ROLE.ADMIN && order.orderstateid !== ORDER_STATE.SAVED) return DB_RES.WRONG_ORDERID
+
         const res = await Order.deleteOne({orderid: orderid})
         if(res.deletedCount === 0) return DB_RES.WRONG_ORDERID
         return DB_RES.ORDER_DELETED
@@ -548,6 +568,7 @@ async function getDeliverableOrders(userid) {
                     hasToDeliver: 1,
                     isPayed: 1,
                     date: 1,
+                    comment: 1,
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",
                     productPrice: "$product.price",
@@ -636,6 +657,7 @@ async function getDeliveredOrders(userid) {
                     hasToDeliver: 1,
                     isPayed: 1,
                     date: 1,
+                    comment: 1,
                     deliverName: "$deliver.username",
                     state: "$orderstate.orderstateid",
                     productName: "$product.name",

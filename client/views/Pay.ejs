@@ -5,25 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pay</title>
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body style="background-color: gray;">
-    <hr>
-    <form action="/logout" method="post">
-        <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
-    </form>
-    <hr>
-    <h1>Fizetés</h1>
-    <hr>
-    <h2>Asztal választás: </h2>
-    <div id="allTableDiv"></div>
-    <h3>Kiválasztott asztal: <span id="selectedTableSpan"></span></h3>
-    <hr>
-    <h2>Tételek: </h2>
-    <div id="tableProductsDiv"></div>
-    <hr>
-    <h2>Végösszeg: <span id="totalAmountSpan">0</span> Ft</h2>
-    <button type="button" id="payButton">Fizetés</button>
-    <hr>
+<body>
+    <div id="header"></div>
+    <div id="navbar"></div>
+    <div class="content-container">
+        <hr>
+        <form action="/logout" method="post">
+            <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
+        </form>
+        <hr>
+        <h1>Fizetés</h1>
+        <hr>
+        <h2>Asztal választás: </h2>
+        <div id="allTableDiv"></div>
+        <h3>Kiválasztott asztal: <span id="selectedTableSpan"></span></h3>
+        <hr>
+        <h2>Tételek: </h2>
+        <div id="tableProductsDiv"></div>
+        <hr>
+        <h2>Végösszeg: <span id="totalAmountSpan">0</span> Ft</h2>
+        <button type="button" id="payButton">Fizetés</button>
+        <hr>
+    </div>
+    
 
     <script src="ws-states.js"></script>
     <script src="/public/js/pages/pay.js"></script>

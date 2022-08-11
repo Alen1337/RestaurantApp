@@ -3,6 +3,8 @@ const tableProductsDiv = document.getElementById("tableProductsDiv")
 const totalAmountSpan = document.getElementById("totalAmountSpan")
 const selectedTableSpan = document.getElementById("selectedTableSpan")
 const payButton = document.getElementById("payButton")
+import * as Navbar from "/public/js/ALib/components/main/Navbar.js"
+import * as HeaderBar from "/public/js/ALib/components/main/HeaderBar.js"
 let socket
 let selectedTable = {
     name: "Nincs",
@@ -24,6 +26,7 @@ function init() {
             getOrdersByTable(selectedTable.tableid)
             getTableNameByID(selectedTable.tableid)
         }
+        HeaderBar.init(WSS)
     })
 
     socket.addEventListener('message', function (event) {
@@ -33,12 +36,14 @@ function init() {
         else if(dataParsed.type === RES_TYPES.ERROR) WSErrorRes(dataParsed)   
         else if(dataParsed.type === RES_TYPES.UPDATE) WSUpdateMSG(dataParsed)
     });
+    Navbar.render()
 }
 
 function WSSuccessRes(res) {
     if(res.action === REQ_ACTION.TABLES) displayAllTable(res.msg)
     if(res.action === REQ_ACTION.ORDERS_BY_TABLE) displayOrdersByTable(res.msg)
     if(res.action === REQ_ACTION.TABLE_BY_ID) displaySelectedTableName(res.msg)
+    else if(res.action === REQ_ACTION.DISPLAY_USER) HeaderBar.setUser(res.msg)
 }
 
 function WSErrorRes(res) {

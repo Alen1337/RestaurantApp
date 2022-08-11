@@ -1,3 +1,7 @@
+import * as Navbar from "/public/js/ALib/components/main/Navbar.js"
+import * as HeaderBar from "/public/js/ALib/components/main/HeaderBar.js"
+import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
+
 const userList = get('userList')
 const productList = get('productList')
 const tableList = get('tableList')
@@ -18,16 +22,15 @@ const productPrice = get('productPrice').value
 const newProductButton = get('addNewProductButton')
 const tableName = get('tableName').value
 const newTableButton = get('addNewTableButton')
-let socket
 
 function get(id) {
     return document.getElementById(id)
 }
 
 function init() {
-    socket = new WebSocket('ws://localhost:5000/admin-panel');
+    WSS.init(TARGET.ADMIN_PANEL)
     
-    socket.addEventListener('message', function (event) {
+    WSS.getSocket().addEventListener('message', function (event) {
         let dataParsed = JSON.parse(event.data) 
 
         if(dataParsed.type === RES_TYPES.SUCCESS) WSSuccessRes(dataParsed)
@@ -35,20 +38,22 @@ function init() {
         else if(dataParsed.type === RES_TYPES.UPDATE) WSUpdateMSG(dataParsed)
     });
 
-    socket.addEventListener('open', (event) => {
-        getUsers(socket)
-        getProducts(socket)
-        getRoles(socket)
-        getTables(socket)
-        getOrders(socket)
-        getOrderStates(socket)
-        getLoginTokens(socket)
+    WSS.getSocket().addEventListener('open', (event) => {
+        getUsers(WSS.getSocket())
+        getProducts(WSS.getSocket())
+        getRoles(WSS.getSocket())
+        getTables(WSS.getSocket())
+        getOrders(WSS.getSocket())
+        getOrderStates(WSS.getSocket())
+        getLoginTokens(WSS.getSocket())
         getAllPayment()
+        HeaderBar.init(WSS)
     })
 
     newUserButton.addEventListener('click', ()=>{sendNewUser(socket)})
     newProductButton.addEventListener('click', ()=>{sendNewProduct(socket)})
     newTableButton.addEventListener('click', ()=>{sendNewTable(socket)})
+    Navbar.render()
 }
 
 function WSSuccessRes(dataParsed) {
@@ -60,6 +65,7 @@ function WSSuccessRes(dataParsed) {
     else if(dataParsed.action === REQ_ACTION.ORDER_STATES) { displayOrderStatesList(dataParsed.msg) } 
     else if(dataParsed.action === REQ_ACTION.LOGIN_TOKENS) { displayLoginTokensList(dataParsed.msg) } 
     else if(dataParsed.action === REQ_ACTION.PAYMENTS) { displayPayments(dataParsed.msg) } 
+    else if(dataParsed.action === REQ_ACTION.DISPLAY_USER) HeaderBar.setUser(dataParsed.msg)
 }
 function WSErrorRes(res) {
 
@@ -259,7 +265,7 @@ function getAllPayment() {
         type: REQ_TYPES.GET,
         action: REQ_ACTION.PAYMENTS
     }
-    socket.send(JSON.stringify(req))
+    WSS.getSocket().send(JSON.stringify(req))
 }
 
 function sendNewUser(socket) {

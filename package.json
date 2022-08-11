@@ -4,11 +4,14 @@
   "description": "",
   "main": "./server/Server.js",
   "scripts": {
+    "tail": "postcss ./client/css/tailwind.css -o ./client/css/style.css",
+    "noodmon": "nodemon ./server/Server.js",
     "dev": "nodemon ./server/Server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.8",
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
@@ -20,10 +23,15 @@
     "mongoose": "^6.4.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.1.8",
     "ws": "^8.8.0"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "dotenv": "^16.0.1",
-    "eslint": "^8.19.0"
+    "eslint": "^8.19.0",
+    "npm-run-all": "^4.1.5"
   }
 }

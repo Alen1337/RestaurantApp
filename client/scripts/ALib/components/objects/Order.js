@@ -14,7 +14,8 @@ export function render(order) {
     "Készítő: " + order.makerName + " - " +
     "Kivitte: " + order.deliverName + "</li>" +
     "<li>Termék: " + order.productName + " - " +
-    "Ár: " + order.productPrice + "</li></ul><br>"
+    "Ár: " + order.productPrice + "</li>" + 
+    "<li>" + "Megjegyzés: " + order.comment + "</li></ul><br>"
     
 }
 

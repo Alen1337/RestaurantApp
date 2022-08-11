@@ -1,5 +1,7 @@
 export function render(order) {
-    return "Termék: " + order.productName + " - " +
-    "Ár: " + order.productPrice + ""
-    
+    let out = "Termék: " + order.productName + " - " +
+    "Ár: " + order.productPrice
+
+    if(order.comment !== "") out += " - " + "Megjegyzés: " + order.comment
+    return out
 }
