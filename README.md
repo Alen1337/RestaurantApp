@@ -6,5 +6,5 @@
 - npm run dev
 - localhost:5000
 - login with:
-    - [Username]: testuser
-    - [Password]: testpass
+    - Username: testuser
+    - Password: testpass
