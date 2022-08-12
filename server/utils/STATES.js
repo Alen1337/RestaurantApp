@@ -127,7 +127,7 @@ const REQ = {
 }
 
 const ELEMENT = Object.freeze({
-    SRB_PRODUCT_ID: "search-result-button product-id:", 
+    SRB_PRODUCT_ID: "add-product: ", 
     TB_TABLE_ID: "table-select-button table-id:", 
     ACCEPT_ORDER_BUTTON: "accept-order-button order-id:",
     DECLINE_ORDER_BUTTON: "decline-order-button order-id:",
@@ -149,7 +149,8 @@ const ELEMENT = Object.freeze({
     NAV_ORDER_DELIVERY_BUTTON: "nav-order-delivery-button",
     NAV_PAY_BUTTON: "nav-pay-button",
     NAV_ADMIN_PANEL_BUTTON: "nav-admin-panel-button",
-    NAV_LOGOUT_BUTTON: "nav-logout-button"
+    NAV_LOGOUT_BUTTON: "nav-logout-button",
+    NAV_HOMEPAGE_BUTTON: "nav-homepage-button"
 })
 
 const DELIVER_MODE = {

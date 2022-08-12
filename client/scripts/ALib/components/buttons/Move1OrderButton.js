@@ -8,6 +8,6 @@ export function init(_outputHtml) {
 export function render(orderid) {
     const text = "Áthelyzés"
     const id = ELEMENT.MOVE_ORDER_BUTTON + orderid
-    return `<button type='button' id='${id}'>${text}</button>`
+    return `<button type='button' id='${id}' class='tsf-button'>${text}</button>`
 
 }

@@ -9,7 +9,7 @@ const logoutIcon = `<img src='/public/img/logoutIcon.png' class="w-[30px] hue-ro
 const logoIcon = `<img src='/public/img/logo.png' class="w-[45px] hue-rotate-15">`
 export function render() {
     let out = `<div class="navbar-container">`
-    out += renderButton(logoIcon)
+    out += renderButton(logoIcon, ELEMENT.NAV_HOMEPAGE_BUTTON)
     out += "<hr class='navbar-hr'>"
     out += renderButton(orderManagerIcon, ELEMENT.NAV_ORDER_MANAGER_BUTTON)
     out += renderButton(orderMakerIcon, ELEMENT.NAV_ORDER_MAKER_BUTTON)
@@ -33,6 +33,7 @@ function renderButton(icon, id) {
 }
 
 function setupButtons() {
+    let homePageButt = document.getElementById(ELEMENT.NAV_HOMEPAGE_BUTTON)
     let orderManagerButt = document.getElementById(ELEMENT.NAV_ORDER_MANAGER_BUTTON)
     let orderMakerButt = document.getElementById(ELEMENT.NAV_ORDER_MAKER_BUTTON)
     let orderDeliveryButt = document.getElementById(ELEMENT.NAV_ORDER_DELIVERY_BUTTON)
@@ -40,6 +41,9 @@ function setupButtons() {
     let adminPanelButt = document.getElementById(ELEMENT.NAV_ADMIN_PANEL_BUTTON)
     let logoutButt = document.getElementById(ELEMENT.NAV_LOGOUT_BUTTON)
 
+    homePageButt.addEventListener('click', ()=> {
+        window.location.replace("/");
+    })
     orderManagerButt.addEventListener('click', ()=> {
         window.location.replace("/order-manager");
     })

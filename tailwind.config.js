@@ -6,6 +6,7 @@ module.exports = {
     './client/scripts/**/**.js',
     './client/scripts/**/**/**.js',
     './client/scripts/**/**/**/**.js',
+    './client/scripts/**/**/**/**/**.js',
     './client/views/*.ejs'
   ],
   theme: {

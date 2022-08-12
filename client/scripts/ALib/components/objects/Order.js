@@ -6,7 +6,7 @@ export function render(order) {
     if(order.makerName === undefined) order.makerName = "SENKI"
     if(order.deliverName === undefined) order.deliverName = "SENKI"
     if(order.isPayed) payState = "IGEN"
-    return "<ul><li>Asztal: " + order.tableName + " - " + 
+    return "<ul><li>" + order.tableName + " - " + 
     "Fizetett: " + payState + " - " +
     "Állapot: " + orderState + " - " + 
     "Kiviteli mód: " + DeliverMode + "</li>" +

@@ -12,7 +12,7 @@ export function render() {
     let text = "Asztal szabad"
     if(TableSelector.getSelectedTable().isFree) text = "Asztal felvétel"
     
-    outputElement.innerHTML =  `<button type='button' id='${id}'>${text}</button>`
+    outputElement.innerHTML =  `<button type='button' id='${id}' class='tsf-button'>${text}</button>`
     const isFreeButton = document.getElementById(ELEMENT.TABLE_IS_FREE_BUTTON)
     isFreeButton.addEventListener('click', () => {
         if(TableSelector.getSelectedTable().isFree) {

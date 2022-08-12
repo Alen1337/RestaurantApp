@@ -7,39 +7,16 @@
     <title>HomePage</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body style="background-color: gray;">
+<body class="bg-gray-800">
     <div id="header"></div>
     <div id="navbar"></div>
     <div class="content-container">
-        <hr>
-        <form action="/logout" method="post">
-            <button type="submit">Kijelentkezés</button>
-        </form>
-        <hr>
-        <h1 class="text-red-400">Főoldal</h1>
-        <hr>
-        <h2>Felhasználó:
-        <div id="loggedUserName"></div> </h2>
-
-        <h2>Rang:
-        <div id="loggedUserRole"></div>   </h2>   
-        <hr>
-
-        <h2>Felületek: </h2>
-        <hr>
-        <ul>
-            <li><a href="/admin-panel">Admin panel</a></li><br>
-
-            <li><a href="/order-manager">Rendelés felütés</a></li><br>
-
-            <li><a href="/pay">Fizetés</a></li><br>
-
-            <li><a href="/order-maker">Rendelés készítő</a></li><br>
-
-            <li><a href="/order-delivery">Rendelés kézbesítés</a></li>
-        </ul>
-        <hr>
+        <div class="h1-text">ASystems</div>
+        <div class="h2-text">RestaurantApp</div>
+        <div class="index-welcome-container">Üdvözöljük!</div>
     </div>
+
+
 
     <script src="ws-states.js"></script>
     <script type="module" src="/public/js/pages/homepage.js"></script>

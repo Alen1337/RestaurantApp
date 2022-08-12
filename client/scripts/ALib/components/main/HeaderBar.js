@@ -1,7 +1,7 @@
 const loggedUserNameDiv = document.getElementById("loggedUserName")
 const loggedUserRoleDiv = document.getElementById("loggedUserRole")
 const headerDiv = document.getElementById("header")
-let time = "Betöltés"
+let time = new Date().toLocaleTimeString()
 let user
 export function init(WSS) {
     WSS.getDisplayUser()
@@ -17,7 +17,7 @@ function render() {
     let a = `<span class="text-green-400">[${user.roleName}] </span>`
 
     let out = `<div class="header-container">`
-    out +=`<div class="appname-container"><span">RestaurantApp v1.0</span></div>`
+    //out +=`<div class="appname-container"><span">RestaurantApp v1.0</span></div>`
     out +=`<div class="user-container">`
     if(user.roleName === "Admin") a = `<span>[${user.roleName}] </span>`
     out += a

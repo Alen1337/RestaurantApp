@@ -21,7 +21,7 @@ const newVirtualTableButton = document.getElementById('newVirtualTableButton')
 const payButtonDiv = document.getElementById('payButtonDiv')
 const setTableIsFreeButton = document.getElementById("setTableIsfreeButtonDiv")
 const deleteVirtualTableButtonDiv = document.getElementById("deleteVirtualTableButtonDiv")
-const deliverModeSpan = document.getElementById("deliverModeSpan")
+const deliverModeSpan = document.getElementById("deliverModeDiv")
 const moveOrdersButtonDiv = document.getElementById("moveOrdersButtonDiv")
 const selectTableToMoveDiv = document.getElementById("selectTableToMoveDiv")
 const roundFinishButtonDiv = document.getElementById("roundFinishButtonDiv")
@@ -67,7 +67,7 @@ function init() {
 
 function WSSuccessRes(res) {
     if(res.action === REQ_ACTION.TABLES) {
-        TableSelector.render(res.msg)
+        TableSelector.setTables(res.msg)
         TableIsFreeButton.render()
         DeleteVirtualTableButton.render()
         MoveOrderTableSelector.setTables(res.msg)

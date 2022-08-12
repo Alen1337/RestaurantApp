@@ -18,26 +18,36 @@ export function render(orders) {
 }
 
 function renderOrderDisplayMode() {
-    if(!MoreDetailMode) return "<button type='button' id='more-detail-mode-button'>Részletes megjelenítés</button>"
-    return "<button type='button' id='more-detail-mode-button'>Egyszerű megjelenítés</button>"
+    if(!MoreDetailMode) return "<button type='button' id='more-detail-mode-button' class='tsf-button'>Részletes megjelenítés</button>"
+    return "<button type='button' id='more-detail-mode-button' class='tsf-button'>Egyszerű megjelenítés</button>"
 }
 
 function renderOrderList(orders) {
     outputElement.innerHTML = ""
     if(!orders) return
     if(orders.length === 0) return
-    let out = renderOrderDisplayMode()
-    out += "<ol>"
+    let out =`<div class='mb-5'>
+        ${renderOrderDisplayMode()}
+    </div>` 
+    //out += "<ol>"
     const resLen = orders.length
     for (let i = 0; i < resLen; i++) {
-        if(MoreDetailMode) out += `<li>${Order.render(orders[i])}`
-        else out += `<li>${LessOrder.render(orders[i])}`
+        out += `<div class='table-order-container'>`
+
+        let order = `${LessOrder.render(orders[i])}`
+        if(MoreDetailMode) order = `${Order.render(orders[i])}`
+        
+        out += `
+        <div class='order-box'>
+            ${order}
+        `
+
         out += Move1OrderButton.render(orders[i].orderid)
         if(orders[i].state === ORDER_STATE.SAVED)out += DeleteOrderButton.render(orders[i].orderid)
 
-        out+= "</li>"
+        out+= "</div></div>"
     }
-    out+="</ol>"
+    //out+="</ol>"
     outputElement.innerHTML = out
 
     const butt = document.getElementById("more-detail-mode-button")

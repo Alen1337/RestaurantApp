@@ -11,7 +11,7 @@ export function render() {
     if(TableSelector.getSelectedTable().isFree) return
     const id = ELEMENT.PAY_BUTTON
     const text = "Fizetés"
-    outputElement.innerHTML =  `<button type='button' id='${id}'>${text}</button>`
+    outputElement.innerHTML =  `<button type='button' id='${id}' class='tsf-button'>${text}</button>`
     const payButton = document.getElementById(ELEMENT.PAY_BUTTON)
     payButton.addEventListener('click', () => {
             window.location.replace("/pay/" + TableSelector.getSelectedTableID());

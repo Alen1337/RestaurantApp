@@ -7,37 +7,45 @@
     <title>Document</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body class="bg-gray-800">
     <div id="header"></div>
     <div id="navbar"></div>
     <div class="content-container">
-        <hr>
-        <form action="/logout" method="post">
-            <button type="submit">Kijelentkezés</button> - <a href="/order-maker">Rendelés készítő</a><br>
-        </form>
-        
-        <hr>
-        <h2>Asztal választás:</h2>
-        <button type="button" id="newVirtualTableButton">Virtuális asztal hozzáadása</button>
-        <div id="tableList"></div>
-        <hr>
-        <h3>Kiválasztott asztal: <span id="selectedTable"></span></h3>
-        <div id="payButtonDiv"></div>
-        <div id="setTableIsfreeButtonDiv"></div> 
-        <div id="roundFinishButtonDiv"></div> 
-        <div id="deleteVirtualTableButtonDiv"></div> 
-        <div id="moveOrdersButtonDiv"></div> 
-        <div id="selectTableToMoveDiv"></div> 
-        <hr>
-        <h3>Tételek:</h3>
-        <div id="ordersByTable"></div>
-        <hr>
-        <h2>Kiviteli mód: <span id="deliverModeSpan"></span> </h2>
-        <h2>Keresés: <input type="text" id="searchbar" name="searchbar"></h2>
-        <h2>Megjegyzés a rendeléshez: <input type="text" id="commentbar" name="commentbar"></h2>
-        <h2>Találatok:</h2>
-        <div id="matches"></div>
-        <hr>
+        <div class="h1-text">Rendelés Felütés</div>
+        <div class="next-to-container">
+            <div class="table-selector">
+                <div class="h2-text">Asztalok</div>
+                <div class="selected-table">Kiválasztva: <span id="selectedTable"></span></div>
+                <div id="tableList" class="table-container"></div>
+                <button type="button" id="newVirtualTableButton" class="tsf-button">Virtuális asztal hozzáadása</button>
+                <div id="payButtonDiv"></div>
+                <div id="setTableIsfreeButtonDiv"></div> 
+                <div id="roundFinishButtonDiv"></div> 
+                <div id="deleteVirtualTableButtonDiv"></div> 
+                <div id="moveOrdersButtonDiv"></div> 
+                <div id="selectTableToMoveDiv"></div> 
+            </div>
+    
+            <div class="product-search">
+                <div class="h2-text">Keresés</div>
+                <input type="text" id="searchbar" name="searchbar" class=" rounded-3xl w-fit ">
+                <div class="h2-text">Megjegyzés</div>
+                <input type="text" id="commentbar" name="commentbar" class=" rounded-3xl w-fit ">
+                <div class="deliver-mode-container">
+                    <div class="h2-text">Kiviteli mód</div>
+                    <div id="deliverModeDiv"></div>
+                    <div id="switchDeliverModeDiv"></div>
+                </div>
+                
+                <div class="h2-text">Termékek</div>
+                <div id="matches" class="relative flex flex-col items-center "></div>
+            </div>
+    
+            <div class="orders-container">
+                <div class="h2-text" >Tételek</div>
+                <div id="ordersByTable"></div>
+            </div>
+        </div>
     </div>
     
     <script src="ws-states.js"></script>

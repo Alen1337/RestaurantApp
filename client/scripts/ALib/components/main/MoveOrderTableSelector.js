@@ -44,7 +44,7 @@ function renderTableList() {
     
     for (let i = 0; i < tablesLen; i++) {
         let id = ELEMENT.CHOOSE_TABLE_TO_MOVE_ORDER_BUTTON + tables[i].tableid
-        out +=  `<button type='button' id='${id}'>${tables[i].name}</button>`
+        out +=  `<button type='button' id='${id}' class='tsf-button'>${tables[i].name}</button>`
     }
     tablesElement.innerHTML = out
 }

@@ -13,7 +13,7 @@ export function render() {
     const id = ELEMENT.DELETE_VIRTUAL_TABLE_BUTTON
     let text = "Virtuális asztal törlése"
     
-    outputElement.innerHTML =  `<button type='button' id='${id}'>${text}</button>`
+    outputElement.innerHTML =  `<button type='button' id='${id}' class='tsf-button'>${text}</button>`
     const isFreeButton = document.getElementById(id)
     isFreeButton.addEventListener('click', () => {
             WSS.deleteVirtualTable(TableSelector.getSelectedTableID())

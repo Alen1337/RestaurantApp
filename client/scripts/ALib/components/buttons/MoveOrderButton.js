@@ -13,7 +13,7 @@ export function render() {
     const text = "Összes rendelés áthelyezése"
     const id = ELEMENT.MOVE_ORDERS_BUTTON 
     
-    outputElement.innerHTML =  `<button type='button' id='${id}'>${text}</button>`
+    outputElement.innerHTML =  `<button type='button' id='${id}' class='tsf-button'>${text}</button>`
 
     const butt = document.getElementById(id)
     butt.addEventListener('click', ()=> {
