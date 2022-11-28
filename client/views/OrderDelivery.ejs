@@ -7,24 +7,22 @@
     <title>OrderDelivery</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body class="bg-gray-800">
     <div id="header"></div>
     <div id="navbar"></div>
     <div class="content-container">
-        <hr>
-        <form action="/logout" method="post">
-            <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
-        </form>
-        <hr>
-        <h1>Rendelés kézbesítés</h1>
-        <hr>
-        <h2>Kiszállítandó rendelések:</h2>
-        <div id="deliverableOrdersDiv"></div>
-        <hr>
-        <h2>Kiszállított rendelések:</h2>
-        <div id="deliveredOrdersDiv"></div>
-        <hr>
-
+        <div class="h1-text">Kiszállítás</div >
+        <div class="next-to-container">
+            <div class="deliverable-orders-container">
+                <div class="h2-text">Kiszállítandó rendelések</div>
+                <div id="deliverableOrdersDiv"></div>
+            </div>
+            
+            <div class="delivered-orders-container">
+                <div class="h2-text">Kiszállított rendelések</div>
+            <div id="deliveredOrdersDiv"></div>
+            </div>
+        </div>
     </div>
 
 

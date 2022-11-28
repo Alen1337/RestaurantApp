@@ -30,9 +30,10 @@ function renderList(orders) {
         <div class='order-box'>
         
         ${LessOrder.render(orders[i])} 
-        ${AcceptOrderButton.render(orders[i])} 
+        
         
         </div>
+        ${AcceptOrderButton.render(orders[i])} 
         </div>`
     }
     out+=""

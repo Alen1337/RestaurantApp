@@ -41,11 +41,11 @@ function renderOrderList(orders) {
         <div class='order-box'>
             ${order}
         `
-
+        out+= "</div>"
         out += Move1OrderButton.render(orders[i].orderid)
         if(orders[i].state === ORDER_STATE.SAVED)out += DeleteOrderButton.render(orders[i].orderid)
 
-        out+= "</div></div>"
+        out+= "</div>"
     }
     //out+="</ol>"
     outputElement.innerHTML = out

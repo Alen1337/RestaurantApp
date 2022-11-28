@@ -99,26 +99,29 @@
 
     .tsf-button {
         @apply bg-blue-500
-        px-3
-        m-1
+        p-3
+        mb-3
         rounded-2xl
-        w-fit
+        w-full
         text-gray-200
         font-bold
+        text-3xl
         hover:bg-blue-400
     }
     .content-container {
         @apply flex flex-col items-start
         bg-gray-800
+        
         ml-16
+        mr-0
         pt-5
         px-5
         pb-5
-        w-fit h-fit 
+        h-fit 
     }
 
     .next-to-container {
-        @apply relative flex flex-row;
+        @apply flex flex-row w-full
     }
 
     .table-selector {
@@ -173,7 +176,6 @@
     .table-order-container {
         @apply bg-gray-800
         px-3 mb-3
-        w-full
         rounded-2xl
         font-bold
         relative flex flex-col items-center justify-center;
@@ -188,20 +190,41 @@
         @apply text-red-500
     }
 
+
     .orders-to-accept-container {
         @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
-        px-5 text-center  w-1/3 flex  align-middle 
+        px-5 text-center  w-1/3 
     }
 
     .accepted-orders-container {
         @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
-        px-5 text-center  w-1/3 flex align-middle 
-        mx-5 
+        px-5 text-center  w-1/3 mx-5 
+         
     }
 
     .finished-orders-container {
         @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
-        px-5 text-center  w-1/3 flex align-middle 
+        px-5 text-center  w-1/3 
+    }
+
+    .deliverable-orders-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 mr-5 
+    }
+
+    .delivered-orders-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 
+    }
+
+    .pay-table-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 mr-5
+    }
+
+    .pay-order-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 
     }
 }
 

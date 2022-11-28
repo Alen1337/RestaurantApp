@@ -30,11 +30,12 @@ function renderList(orders) {
         
         <div class='table-order-container'>
         <div class='order-box'>
-        
         ${LessOrder.render(orders[i])} 
-        ${UndoOrderDoneButton.render(orders[i])} 
+        
         
         </div>
+        
+        ${UndoOrderDoneButton.render(orders[i])} 
         </div>
         `
     }

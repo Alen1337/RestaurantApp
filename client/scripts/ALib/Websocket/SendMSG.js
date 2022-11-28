@@ -48,14 +48,6 @@ export function sendNewVirtualTable() {
         }))
 }
 
-export function getOrdersByTable(tableid) {
-    socket.send(JSON.stringify({ 
-        target: target, 
-        type: REQ_TYPES.GET,
-        action: REQ_ACTION.ORDERS_BY_TABLE, 
-        tableid:  tableid
-        }))
-}
 
 export function getAllOrder() {
     socket.send(JSON.stringify({ 
@@ -65,13 +57,6 @@ export function getAllOrder() {
         }))
 }
 
-export function getAllTable() {
-    socket.send(JSON.stringify({ 
-        target: target,
-        type: REQ_TYPES.GET, 
-        action: REQ_ACTION.TABLES, 
-        }))
-}
 
 export function getNonAcceptedOrders() {
     socket.send(JSON.stringify({ 
@@ -213,4 +198,39 @@ export function move1OrderToNewTable(orderid, tableid) {
         orderid: orderid,
         tableid: tableid
     }))
+}
+
+export function getAllTable() {
+    socket.send(JSON.stringify({ 
+        target: target,
+        type: REQ_TYPES.GET, 
+        action: REQ_ACTION.TABLES, 
+        }))
+}
+
+export function getOrdersByTable(tableid) {
+    socket.send(JSON.stringify({ 
+        target: target, 
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.ORDERS_BY_TABLE, 
+        tableid:  tableid
+        }))
+}
+
+export function getTableNameByID(tableid) {
+    socket.send(JSON.stringify({ 
+        target: target, 
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.TABLE_BY_ID, 
+        tableid:  tableid
+        }))
+}
+
+export function sendPay(tableid) {
+    socket.send(JSON.stringify({ 
+        target: target, 
+        type: REQ_TYPES.POST,
+        action: REQ_ACTION.PAY, 
+        tableid:  tableid
+        }))
 }

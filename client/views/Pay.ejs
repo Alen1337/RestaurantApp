@@ -7,31 +7,38 @@
     <title>Pay</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body class="bg-gray-800">
     <div id="header"></div>
     <div id="navbar"></div>
     <div class="content-container">
-        <hr>
-        <form action="/logout" method="post">
-            <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
-        </form>
-        <hr>
-        <h1>Fizetés</h1>
-        <hr>
-        <h2>Asztal választás: </h2>
-        <div id="allTableDiv"></div>
-        <h3>Kiválasztott asztal: <span id="selectedTableSpan"></span></h3>
-        <hr>
-        <h2>Tételek: </h2>
-        <div id="tableProductsDiv"></div>
-        <hr>
-        <h2>Végösszeg: <span id="totalAmountSpan">0</span> Ft</h2>
-        <button type="button" id="payButton">Fizetés</button>
-        <hr>
+        <div class="h1-text">Fizetés</div >
+    
+            <div class="next-to-container">
+                <div class="pay-table-container">
+                    <div class="h2-text">Asztal választás</div>
+                    <div class="selected-table">Kiválasztva: <span id="selectedTableSpan"></span></div>
+                    <div class="selected-table">Végösszeg: <span id="totalAmountSpan">0</span> Ft</div>
+                    <button type="button" id="payButton" class="tsf-button mt-5">Fizetés</button>
+                    <div id="allTableDiv" class="table-container"></div>
+                    
+                    
+                </div>
+
+                <div class="pay-order-container">
+                    <div class="h2-text">Tételek</div>
+                    <div id="tableProductsDiv"></div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        
+
     </div>
     
 
     <script src="ws-states.js"></script>
-    <script src="/public/js/pages/pay.js"></script>
+    <script type="module" src="/public/js/pages/pay.js"></script>
 </body>
 </html>
