@@ -7,29 +7,28 @@
     <title>OrderMaker</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body class="bg-gray-800">
     <div id="header"></div>
     <div id="navbar"></div>
     <div class="content-container">
-        <hr>
-        <form action="/logout" method="post">
-            <button type="submit">Kijelentkezés</button> - <a href="/order-manager">Rendelés felütés</a><br>
-        </form>
-        
-        <hr>
+        <div class="h1-text">Rendelések</div >
     
-        <h1>Rendelés készítő</h1>
-        <hr>
-        <h2>Rendelések: </h2>
-        <div id="ordersToAccept"></div>
-        <hr>
-        <h2>Elfogadott rendelések:</h2>
-        <div id="acceptedOrders"></div>
-        <hr>
-        <h2>Kész rendelések:</h2>
-        <div id="finishedOrders"></div>
-        <hr>
-
+        <div class="next-to-container">
+            <div class="orders-to-accept-container">
+                <div class="h2-text">Rendelések</div>
+                <div id="ordersToAccept"></div>
+            </div>
+            
+            <div class="accepted-orders-container">
+                <div  class="h2-text">Elfogadott</div>
+                <div  id="acceptedOrders"></div>
+            </div>
+    
+            <div class="finished-orders-container">
+                <div  class="h2-text">Kész</div>
+                <div id="finishedOrders"></div>
+            </div>
+        </div>
     </div>
 
 

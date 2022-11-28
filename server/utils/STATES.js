@@ -132,7 +132,7 @@ const ELEMENT = Object.freeze({
     ACCEPT_ORDER_BUTTON: "accept-order-button order-id:",
     DECLINE_ORDER_BUTTON: "decline-order-button order-id:",
     ORDER_DONE_BUTTON: "order-done-button order-id:",
-    UNDO_ORDER_DONE_BUTTON: "order-done-button order-id:",
+    UNDO_ORDER_DONE_BUTTON: "undo-order-done-button order-id:",
     DELIVER_ORDER_BUTTON: "deliver-order-button order-id:",
     UNDO_DELIVER_ORDER_BUTTON: "undo-deliver-order-button order-id:",
     PAY_BUTTON: "pay-button",

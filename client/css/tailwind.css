@@ -188,6 +188,21 @@
         @apply text-red-500
     }
 
+    .orders-to-accept-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/3 flex  align-middle 
+    }
+
+    .accepted-orders-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/3 flex align-middle 
+        mx-5 
+    }
+
+    .finished-orders-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/3 flex align-middle 
+    }
 }
 
 

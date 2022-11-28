@@ -16,16 +16,32 @@ export function render(orders) {
 
 function renderList(orders) {
 
-    let out = "<ol>"
+    let out = ""
     const resLen = orders.length
+    if(orders.length === 0) out += 
+    `
+        <div class='table-order-container'>
+        <div class='order-box'>
+        Üres
+        </div>
+        </div>
+    `
     for (let i = 0; i < resLen; i++) {
-        out += `<li>${LessOrder.render(orders[i])}`
+        out += `
+        
+        <div class='table-order-container'>
+        <div class='order-box'>
+        
+        ${LessOrder.render(orders[i])}`
         
         out += `${DeclineOrderButton.render(orders[i])} 
         ${OrderDoneButton.render(orders[i])}
-        </li>`
+        
+        </div>
+        </div>
+        `
     }
-    out+="</ol>"
+    out+=""
     outputElement.innerHTML = out
 }
 

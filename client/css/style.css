@@ -902,6 +902,50 @@ video {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.orders-to-accept-container {
+  margin-top: 1.25rem;
+  display: flex;
+  width: 33.333333%;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.accepted-orders-container {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  margin-top: 1.25rem;
+  display: flex;
+  width: 33.333333%;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.finished-orders-container {
+  margin-top: 1.25rem;
+  display: flex;
+  width: 33.333333%;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
 
 
 

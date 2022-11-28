@@ -90,11 +90,14 @@ async function getFinishedOrders(userid) {
 
 async function orderDone(userid, orderid) {
     try {
+        let o = await Order.findOne({orderid: orderid})
+
+        if(!o || o.orderstateid === ORDER_STATE.DONE) return DB_RES.WRONG_ORDERID
         let result =  await Order.updateOne({orderid: orderid, makerid: userid}, { $set: { 
             orderstateid: ORDER_STATE.DONE,
             date: Date.now() 
         }})
-        if(result.matchedCount === 0) return DB_RES.WRONG_ORDERID
+
         return DB_RES.ORDER_DONE
     } catch(err) {
         error("function orderDone: " + err)

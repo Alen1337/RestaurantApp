@@ -1,3 +1,5 @@
+const { RES_TYPES } = require("./STATES")
+
 const WSLOGGING = false
 
 function requestLogger(req, res, next) {
@@ -33,6 +35,7 @@ function WSResponse(msg) {
         console.log("\x1b[34m", "[RAServer][WS]-[RESPONSE]:", "\x1b[0m" + JSON.stringify(msg, null, 2))
     } else {
         console.log("\x1b[34m", "[RAServer]-[WS]-[RESPONSE]:", "\x1b[0m" + msg.type + ":\t" + msg.action)
+        if(msg.type === RES_TYPES.ERROR) console.log('\x1b[31m', '[WEBSOCKET API ERROR]:\x1b[0m', msg)
     }
 }
 
