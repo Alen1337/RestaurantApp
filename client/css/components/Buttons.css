@@ -1,0 +1,13 @@
+@layer components {
+    .tsf-button {
+        @apply bg-blue-500
+        p-3
+        mb-3
+        rounded-2xl
+        w-full
+        text-gray-200
+        font-bold
+        text-3xl
+        hover:bg-blue-400
+    }
+}

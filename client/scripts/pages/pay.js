@@ -20,7 +20,7 @@ selectedTableSpan.innerHTML = selectedTable.name
 function init() {
     WSS.init(TARGET.PAY)
     payButton.addEventListener('click', () => {
-        sendPay(selectedTable.tableid)
+        WSS.sendPay(TableSelector.getSelectedTableID())
     })
     WSS.getSocket().addEventListener('open', (event) => { 
         WSS.getAllTable()

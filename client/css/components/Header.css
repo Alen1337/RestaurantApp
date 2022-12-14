@@ -1,0 +1,16 @@
+@layer components {
+    .header-container {
+        @apply relative bg-gray-900  text-white flex h-12 min-w-fit pl-20 items-center; 
+    }
+    .user-container {
+        @apply relative flex items-center justify-center 
+        h-8 w-40 mt-7 mb-7 bg-green-600 font-bold mr-2
+        text-gray-300 rounded-3xl shadow-lg ; 
+    }
+    .time-container {
+        @apply relative flex items-center  justify-center
+        h-8 w-20 mt-7 mb-7 bg-green-600  font-bold ml-2
+        text-gray-300 rounded-3xl shadow-lg ; 
+    }
+    
+}

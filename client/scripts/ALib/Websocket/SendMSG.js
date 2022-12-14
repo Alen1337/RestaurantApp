@@ -1,4 +1,3 @@
-
 let socket 
 let target
 const wss = "ws://localhost:5000"
@@ -233,4 +232,80 @@ export function sendPay(tableid) {
         action: REQ_ACTION.PAY, 
         tableid:  tableid
         }))
+}
+
+export function sendNewUser(username, password, roleid) {
+    let user = { 
+        username: username, 
+        password: password, 
+        roleid: roleid
+    }
+    socket.send(JSON.stringify({ 
+        target: target, 
+        type: REQ_TYPES.POST, 
+        action: REQ_ACTION.USER, 
+        user
+    }))
+}
+export function sendNewProduct(name, price) {
+    const product = { 
+        name: name, 
+        price: price 
+    }
+    socket.send(JSON.stringify({ 
+        target: target,  
+        type: REQ_TYPES.POST, 
+        action: REQ_ACTION.PRODUCT, 
+        product
+    }))
+}
+export function sendNewTable(name) {
+    const table = { 
+        name: name 
+    }
+    socket.send(JSON.stringify({
+        target: target, 
+        type: REQ_TYPES.POST, 
+        action: 'postNewTable', 
+        table
+    }))
+}
+export function sendDeleteOrder(orderid) {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.POST,
+        action: REQ_ACTION.DELETE_ORDER,
+        orderid: orderid
+    }))
+}
+export function sendDeleteUser(socket, userid) {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.POST,
+        action: REQ_ACTION.DELETE_USER,
+        userid: userid
+    }))
+}
+export function sendRole(name, isAdmin, isWaiter, isBartender) {
+    const newRole = { 
+        name: name, 
+        isAdmin: isAdmin,
+        isWaiter: isWaiter,
+        isBartender: isBartender,
+    }
+    socket.send(JSON.stringify({
+        target: target, 
+        type: REQ_TYPES.POST, 
+        action: REQ_ACTION.ROLE,
+        role: newRole
+        }))
+}
+
+export function sendDeletePayment(paymentid) {
+    socket.send(JSON.stringify({
+        target: target, 
+        type: REQ_TYPES.POST, 
+        action: REQ_ACTION.DELETE_PAYMENT,
+        paymentid: paymentid
+    }))
 }

@@ -44,18 +44,23 @@ async function payForTable(tableid, collectorid) {
                 $project:{
                     _id: 0,
                     productPrice: "$product.price",
+                    orderid: 1
                 }
             },
             
         ]))
         
-        
+        let lastPaymentid = await Payment.find().sort({paymentid:-1}).limit(1)
+        let paymentid = 1
+        if(lastPaymentid.length > 0) paymentid = Number(lastPaymentid[0].paymentid)+1
+
+        let orderidList = orders.map(o => o.orderid)
 
         const amount = orders.reduce((sum, o) => sum + o.productPrice, 0)
         if(amount === 0) return DB_RES.WRONG_TABLEID
         const date = Date.now()
         const newPayment = new Payment({
-            collectorid, amount, date
+            paymentid, collectorid, amount, tableid, orderidList, date
         })
 
         await newPayment.save()
@@ -86,6 +91,9 @@ async function getAllPayment() {
                     _id: 0,
                     amount: 1,
                     collectorid: 1,
+                    paymentid: 1,
+                    tableid: 1,
+                    orderidList: 1,
                     collectorName: "$user.username",
                 }
             },
@@ -97,7 +105,20 @@ async function getAllPayment() {
     }
 }
 
+async function deletePayment(paymentid) {
+    try {
+        const res = await Payment.deleteOne({paymentid: paymentid})
+        if(res.deletedCount === 0) return DB_RES.WRONG_PAYMENTID
+
+        return DB_RES.PAYMENT_DELETED
+    } catch(err) {
+        error("function deletePayment(): " + err)
+        return DB_RES.ERROR
+    }
+}
+
 module.exports = {
     payForTable,
-    getAllPayment
+    getAllPayment,
+    deletePayment
 }

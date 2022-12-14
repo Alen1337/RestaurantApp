@@ -1,0 +1,11 @@
+@layer components {
+    .pay-table-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 mr-5
+    }
+    
+    .pay-order-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center  w-1/2 
+    }
+}

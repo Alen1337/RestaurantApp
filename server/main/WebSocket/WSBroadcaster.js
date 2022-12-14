@@ -203,7 +203,7 @@ async function undoDeliverOrderUpdate(userid) {
     }
 }
 
-async function paymentUpdate(senderid) {
+async function paymentUpdate() {
     BCLogger("Sending paymentUpdate to WebSocket Clients")
     for (const c of connections) {
         if(c.connection.url === "/" + TARGET.ADMIN_PANEL) {

@@ -107,6 +107,8 @@ async function postReq(req) {
         return res(req, await OrderAPI.moveOrders(req.tablefrom, req.tableto))
     else if(req.action === REQ_ACTION.MOVE_ORDER) 
         return res(req, await OrderAPI.moveOrder(req.orderid, req.tableid))
+    else if(req.action === REQ_ACTION.DELETE_PAYMENT) 
+        return res(req, await PaymentAPI.deletePayment(req.paymentid))
 }
 
 

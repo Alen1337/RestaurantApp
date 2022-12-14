@@ -11,32 +11,29 @@
   <div id="header"></div>
   <div id="navbar"></div>
   <div class="content-container">
-    <hr>
-    <form action="/logout" method="post">
-      <button type="submit">Kijelentkezés</button> - <a href="/">Főoldal</a><br>
-    </form>
-    <hr>
-    <h1>Adminisztrációs felület</h1>
-    <hr>
 
-    <h2>Fizetések: </h2>
-    <div id="paymentsDiv"></div>
-    <hr>
+    <div class="h1-text">Adminisztrációs felület</div >
 
-    <h2>Összes kifizetés</h2>
-    <div id="allPaymentDiv"></div>
-    <hr>
+    <div class="payments-summary-container">
+        <div class="h2-text">Összesített Bevétel</div >
+        <div id="paymentsDiv"></div>
+    </div>
+    
 
-
-    <h2>Bejelentkezési kulcsok:</h2>
+    <div class="payment-list-container">
+        <div class="h2-text">Összes kifizetés</div >
+        <div id="allPaymentDiv"></div>
+    </div>
+    
+ 
+    <div class="h2-text">Bejelentkezési kulcsok</div >
     <div id="loginTokensList"></div>
-    <hr>
 
-    <h2>Felhasználók:</h2>
+    <div class="h2-text">Felhasználók</div >
     <div id="userList"></div>
-    <hr>
 
-    <h2>Új felhasználó hozzáadása:</h2>
+
+    <div class="h2-text">Új felhasználó hozzáadása</div >
     <div id="userRegisterBox">
         <div>
           <label for="username">Username:</label>
@@ -52,13 +49,11 @@
         </div>
         <button type="button" id="addNewUserButton">Register user</button>
     </div>
-    <hr>
 
-    <h2>Rangok:</h2>
+    <div class="h2-text">Rangok</div >
     <div id="rolesList"></div>
-    <hr>
 
-    <h2>Új rang hozzáadása:</h2>
+    <div class="h2-text">Új rang hozzáadása</div >
     <div id="newRoleBox">
         <div>
           <label for="roleName">Name:</label>
@@ -78,13 +73,11 @@
         </div>
         <button type="button" id="addNewRoleButton">Add new role</button>
     </div>
-    <hr>
 
-    <h2>Termékek:</h2>
+    <div class="h2-text">Termékek</div >
     <div id="productList"></div>
-    <hr>
 
-    <h2>Új termék hozzáadása:</h2>
+    <div class="h2-text">Új termék hozzáadása</div >
     <div id="newProductBox">
         <div>
           <label for="productName">Name:</label>
@@ -96,14 +89,13 @@
         </div>
         <button type="button" id="addNewProductButton">Add new product</button>
     </div>
-    <hr>
 
 
-    <h2>Asztalok:</h2>
+    <div class="h2-text">Asztalok</div >
     <div id="tableList"></div>
     <hr>
 
-    <h2>Új asztal hozzáadása:</h2>
+    <div class="h2-text">Új asztal hozzáadása</div >
     <div id="newProductBox">
         <div>
           <label for="tableName">Name:</label>
@@ -111,15 +103,12 @@
         </div>
         <button type="button" id="addNewTableButton">Add new table</button>
     </div>
-    <hr>
 
-    <h2>Rendelések:</h2>
+    <div class="h2-text">Rendelések</div >
     <div id="ordersList"></div>
-    <hr>
 
-    <h2>Rendelés állapotok:</h2>
+    <div class="h2-text">Rendelés állapotok</div >
     <div id="orderStatesList"></div>
-    <hr>
 
   </div>
 

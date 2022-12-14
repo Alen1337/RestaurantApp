@@ -1,0 +1,22 @@
+@layer components {
+    .navbar-container {
+        @apply fixed top-0 left-0 h-screen w-16 flex flex-col
+        bg-gray-900 shadow-lg;
+    }
+    
+    .navbar-icon-div {
+        @apply relative flex items-center justify-center 
+        h-12 w-12 mt-2 mb-2 mx-auto  
+        hover:bg-green-900 bg-gray-800 
+        text-green-500 hover:text-white
+        hover:rounded-xl rounded-3xl
+        transition-all duration-300 ease-linear
+        cursor-pointer shadow-lg ;
+    }
+    
+    .navbar-hr {
+        @apply bg-gray-800 
+        border border-gray-800 rounded-full
+        mx-2;
+    }
+}

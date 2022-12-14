@@ -1,6 +1,8 @@
 import * as Navbar from "/public/js/ALib/components/main/Navbar.js"
 import * as HeaderBar from "/public/js/ALib/components/main/HeaderBar.js"
 import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
+import * as PaymentSummary from "/public/js/ALib/components/adminpanel/PaymentSummary.js"
+import * as PaymentList from "/public/js/ALib/components/adminpanel/PaymentList.js"
 
 const userList = get('userList')
 const productList = get('productList')
@@ -9,8 +11,6 @@ const rolesList = get('rolesList')
 const ordersList = get('ordersList')
 const orderStatesList = get('orderStatesList')
 const loginTokensList = get('loginTokensList')
-const paymentsDiv = get('paymentsDiv')
-const AllPaymentDiv = get('allPaymentDiv')
 
 
 const username = get('username').value
@@ -47,6 +47,8 @@ function init() {
         getOrderStates(WSS.getSocket())
         getLoginTokens(WSS.getSocket())
         getAllPayment()
+
+        WSS.getUsers()
         HeaderBar.init(WSS)
     })
 
@@ -64,7 +66,10 @@ function WSSuccessRes(dataParsed) {
     else if(dataParsed.action === REQ_ACTION.ORDERS) { displayOrdersList(dataParsed.msg) } 
     else if(dataParsed.action === REQ_ACTION.ORDER_STATES) { displayOrderStatesList(dataParsed.msg) } 
     else if(dataParsed.action === REQ_ACTION.LOGIN_TOKENS) { displayLoginTokensList(dataParsed.msg) } 
-    else if(dataParsed.action === REQ_ACTION.PAYMENTS) { displayPayments(dataParsed.msg) } 
+    else if(dataParsed.action === REQ_ACTION.PAYMENTS) { 
+        PaymentList.render(dataParsed.msg) 
+        PaymentSummary.render(dataParsed.msg)
+    } 
     else if(dataParsed.action === REQ_ACTION.DISPLAY_USER) HeaderBar.setUser(dataParsed.msg)
 }
 function WSErrorRes(res) {
@@ -73,48 +78,10 @@ function WSErrorRes(res) {
 
 function WSUpdateMSG(msg) {
     if(msg.action === REQ_ACTION.USERS) getUsers(socket)
-    else if(msg.action === REQ_ACTION.ORDERS) getOrders(socket)
+    else if(msg.action === REQ_ACTION.ORDERS) WSS.get
     else if(msg.action === REQ_ACTION.TABLES) getTables()
 }
 
-
-function displayPayments(res) {
-    let out = "<ol>"
-    const resLen = res.length
-    for (let i = 0; i < resLen; i++) {
-        out +="<li> Fizettető: " + res[i].collectorName + " - Összeg: " + res[i].amount + " Ft"
-        out +=" <button type='button' id='delete-payment:" + res[i].paymentid + "'>Törlés</button>"
-        out +="</li>" 
-    }
-    out+="</ol>"
-    AllPaymentDiv.innerHTML = out
-
-    for (let i = 0; i < resLen; i++) {
-        document.getElementById("delete-payment:" + res[i].paymentid).addEventListener('click', function(event) {
-            sendDeleteUser(socket, res[i].paymentid)
-        })
-    }
-
-    var result = [];
-    res.reduce(function(res, value) {
-        if (!res[value.collectorName]) {
-            res[value.collectorName] = { collectorName: value.collectorName, allAmount: 0 };
-            result.push(res[value.collectorName])
-        }
-        res[value.collectorName].allAmount += value.amount;
-        return res;
-    }, {});
-
-    out = "<ol>"
-    for (let i = 0; i < result.length; i++) {
-        out += "<li>"
-        out += "Felhasználó: " + result[i].collectorName + " Összeg: " + result[i].allAmount + " Ft"
-        out += "</li>"
-    }
-    out += "</ol>"
-    
-    paymentsDiv.innerHTML = out
-}
 function displayError(res) {
     console.log(res)
 } 
@@ -268,57 +235,7 @@ function getAllPayment() {
     WSS.getSocket().send(JSON.stringify(req))
 }
 
-function sendNewUser(socket) {
-    let user = { 
-        username: get('username').value, 
-        password: get('password').value, 
-        roleid: get('role').value 
-    }
-    socket.send(JSON.stringify({ target: TARGET.ADMIN_PANEL, type: REQ_TYPES.POST, action: REQ_ACTION.USER, user}))
-}
-function sendNewProduct(socket) {
-    const product = { 
-        name: get('productName').value, 
-        price: get('productPrice').value 
-    }
-    socket.send(JSON.stringify({ target: "admin-panel",  type: "post", action: 'postNewProduct', product}))
-}
-function sendNewTable(socket) {
-    const table = { name:get('tableName').value }
-    socket.send(JSON.stringify({ target: "admin-panel", type: "post", action: 'postNewTable', table}))
-}
-function sendDeleteOrder(socket, orderid) {
-    const req = {
-        target: TARGET.ADMIN_PANEL,
-        type: REQ_TYPES.POST,
-        action: REQ_ACTION.DELETE_ORDER,
-        orderid: orderid
-    }
-    socket.send(JSON.stringify(req))
-}
-function sendDeleteUser(socket, userid) {
-    const req = {
-        target: TARGET.ADMIN_PANEL,
-        type: REQ_TYPES.POST,
-        action: REQ_ACTION.DELETE_USER,
-        userid: userid
-    }
-    socket.send(JSON.stringify(req))
-}
-function sendRole(socket) {
-    const newRole = { 
-        name: get('roleName').value, 
-        isAdmin: get('isAdmin').isChecked,
-        isWaiter: get('isWaiter').isChecked,
-        isBartender: get('isBartender').isChecked,
-    }
-    socket.send(JSON.stringify({
-        target: TARGET.ADMIN_PANEL, 
-        type: REQ_TYPES.POST, 
-        action: REQ_ACTION.ROLE,
-        role: newRole
-        }))
-}
+
 
 
 

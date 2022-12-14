@@ -1,0 +1,39 @@
+@layer components {    
+    .h1-text {
+        @apply text-green-500 text-4xl font-bold 
+        bg-gray-900 rounded-2xl shadow-lg pt-2 pb-3 
+        px-5 
+    }
+    .h2-text {
+        @apply text-green-500 text-2xl font-bold  mt-2
+        bg-gray-900 rounded-2xl pt-1 pb-2 
+        px-5 
+    }
+    .h3-text {
+        @apply text-green-500 text-2xl font-bold  mt-2
+        bg-gray-800 rounded-2xl  pt-1 pb-2 
+        px-5 
+    }
+    .index-welcome-container {
+        @apply text-green-500 text-xl font-bold  mt-2
+        bg-gray-900 rounded-2xl shadow-lg pt-2 pb-2 
+        px-5 
+    }
+    
+    .content-container {
+        @apply flex flex-col items-start
+        bg-gray-800
+        
+        ml-16
+        mr-0
+        pt-5
+        px-5
+        pb-5
+        h-fit 
+    }
+    
+    .next-to-container {
+        @apply flex flex-row w-full
+    }
+}
+
