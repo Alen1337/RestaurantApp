@@ -278,7 +278,7 @@ export function sendDeleteOrder(orderid) {
         orderid: orderid
     }))
 }
-export function sendDeleteUser(socket, userid) {
+export function sendDeleteUser(userid) {
     socket.send(JSON.stringify({
         target: target,
         type: REQ_TYPES.POST,
@@ -307,5 +307,63 @@ export function sendDeletePayment(paymentid) {
         type: REQ_TYPES.POST, 
         action: REQ_ACTION.DELETE_PAYMENT,
         paymentid: paymentid
+    }))
+}
+
+
+export function getAllRoles() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.ROLES
+    }))
+}
+export function getAllUsers() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.USERS
+    }))
+}
+export function getAllProducts() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.PRODUCTS
+    }))
+}
+export function getAllTables() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.TABLES
+    }))
+}
+export function getAllOrders() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.ORDERS
+    }))
+}
+export function getAllOrderStates() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.ORDER_STATES
+    }))
+}
+export function getAllLoginTokens() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.LOGIN_TOKENS
+    }))
+}
+export function getAllPayments() {
+    socket.send(JSON.stringify({
+        target: target,
+        type: REQ_TYPES.GET,
+        action: REQ_ACTION.PAYMENTS
     }))
 }

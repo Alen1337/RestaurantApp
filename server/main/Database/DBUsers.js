@@ -65,7 +65,19 @@ async function getDisplayUser(userid) {
 
 async function getAllUser() {
     try {
-        return await User.find()
+        let users1 = await User.find()
+        let users = JSON.parse( JSON.stringify( users1 ) )
+        const roles = await Role.find()
+        
+        for (let i = 0; i < users.length; i++) {
+            for (let j = 0; j < roles.length; j++) {
+                if(users[i].roleid === roles[j].roleid) {
+                    Object.assign(users[i], {rolename: roles[j].name});
+                }
+            }
+            
+        }
+        return users
     } catch(err) {
         error("function getAllUser(): " + err)
         return undefined

@@ -1,6 +1,8 @@
 import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
 import * as TableSelector from "/public/js/ALib/components/main/TableSelector.js"
 import * as NewOrderButton from "/public/js/ALib/components/buttons/NewOrderButton.js"
+import * as Product from "/public/js/ALib/components/objects/Product.js"
+
 let htmlElement
 let deliverModeElement
 let deliverMode = DELIVER_MODE.TABLE_SERVICE
@@ -54,30 +56,13 @@ function renderProductList(products) {
     const separator = " - "
     products.forEach(product => {
         outputHTML +=`<div class='product-container'  id='add-product: ${product.productid}'>`
-        outputHTML += renderProduct(product)
+        outputHTML += Product.renderLess(product)
         outputHTML += "</div>"
     });
 
     outputHTML += "</div>"
     htmlElement.innerHTML = outputHTML
 }
-
-function renderProduct(product) {
-    const id = product.productid
-    const name = product.name
-    const price = product.price
-    return `
-    <div class='product-name'>
-        ${name}
-    </div>
-    <div class='product-price'>
-        ${price} Ft
-    </div>`
-
-
-    return "[" + name + " - " + price + " Ft]"
-}
-
 
 function setupButton(products) {
     for (let i = 0; i < products.length; i++) {

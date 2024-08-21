@@ -1,3 +1,15 @@
 @layer components {
-    
+    .productlist-container {
+        @apply bg-gray-900 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center text-gray-200 font-bold w-full
+    }
+    .productlist-results-container {
+        @apply bg-gray-900  pt-3 pb-3 rounded-2xl
+        px-5 text-center text-gray-200 font-bold w-full
+    }
+
+    .productlist-product-container {
+        @apply bg-gray-800 mt-5 pt-3 pb-3 rounded-2xl
+        px-5 text-center text-gray-200 font-bold w-full  
+    }
 }

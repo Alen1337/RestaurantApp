@@ -3,6 +3,7 @@ import * as WSS from "/public/js/ALib/WebSocket/SendMSG.js"
 export function render(res) {
     let out = "<div class='payment-list-result-container'>"
     const resLen = res.length
+    if(resLen === 0) out+= "Nincs"
     for (let i = 0; i < resLen; i++) {
         out += 
         `

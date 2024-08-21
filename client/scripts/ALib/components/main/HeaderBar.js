@@ -1,3 +1,4 @@
+
 const loggedUserNameDiv = document.getElementById("loggedUserName")
 const loggedUserRoleDiv = document.getElementById("loggedUserRole")
 const headerDiv = document.getElementById("header")

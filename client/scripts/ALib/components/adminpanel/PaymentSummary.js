@@ -13,6 +13,7 @@ export function render(res) {
     }, {});
 
     out = "<div class='payment-summary-result-container'>"
+    if(res.length === 0) out+= "Nincs"
     for (let i = 0; i < result.length; i++) {
         out += 
         `

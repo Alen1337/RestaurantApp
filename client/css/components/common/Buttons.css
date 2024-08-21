@@ -10,4 +10,16 @@
         text-3xl
         hover:bg-blue-400
     }
+    .apm-button {
+        @apply bg-green-400
+        rounded-2xl
+        text-gray-200
+        font-bold
+        text-xl
+        mb-0
+        p-2
+        text-center
+        mr-3
+        hover:bg-blue-400
+    }
 }

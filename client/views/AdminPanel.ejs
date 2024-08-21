@@ -7,34 +7,77 @@
     <title>AdminPanel</title>
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body class="bg-gray-800">
+  <div id="loading"class="loader-main">
+    <div class="loader-logo">
+      <img src='/public/img/logo.png' class="loader-logo">
+    </div>
+      
+  </div>
   <div id="header"></div>
   <div id="navbar"></div>
   <div class="content-container">
 
     <div class="h1-text">Adminisztrációs felület</div >
+    
+    <div id="menuButtonList" class="ap-menu-buttons-container">
+      <button id="paymentsMenuButton" type='button' class="apm-button">Pénzügy</button>
+      <button id="usersMenuButton" type='button' class="apm-button">Felhasználók</button>
+      <button id="rolesMenuButton" type='button' class="apm-button">Jogosultságok</button>
+      <button id="productsMenuButton" type='button' class="apm-button">Termékek</button>
+      <button id="tablesMenuButton" type='button' class="apm-button">Asztalok</button>
+      <button id="ordersMenuButton" type='button' class="apm-button">Rendelések</button>
+    </div>
 
-    <div class="payments-summary-container">
+    <div id="payments1" class="payments-summary-container">
         <div class="h2-text">Összesített Bevétel</div >
-        <div id="paymentsDiv"></div>
+        <div id="paymentsDiv"><div class="payment-summary-result-container">Nincs</div></div>
     </div>
     
 
-    <div class="payment-list-container">
+    <div id="payments2" class="payment-list-container">
         <div class="h2-text">Összes kifizetés</div >
-        <div id="allPaymentDiv"></div>
+        <div id="allPaymentDiv"><div class="payment-list-result-container">Nincs<div></div></div></div>
     </div>
-    
- 
-    <div class="h2-text">Bejelentkezési kulcsok</div >
-    <div id="loginTokensList"></div>
 
-    <div class="h2-text">Felhasználók</div >
-    <div id="userList"></div>
+    <div id="users" class='userlist-container'>
+        <div class="h2-text">Felhasználók</div >
+        <div id="userList"></div>
+    </div>
+
+    <div id="roles" class='rolelist-container'>
+        <div class="h2-text">Rangok</div >
+        <div id="rolesList"></div>
+    </div>
+
+    <div id="products" class='productlist-container'>
+        <div class="h2-text">Termékek</div >
+        <div id="productList"></div>
+    </div>
+
+    <div id="tables" class='tablelist-container'>
+        <div class="h2-text">Asztalok</div >
+        <div id="tableList"></div>
+    </div>
+
+    <div id="orders" class="orderslist-container">
+      <div class="h2-text">Rendelések</div >
+      <div id="ordersList"></div>
+    </div>
+
+    <div class="orderstateslist-container" hidden>
+      <div class="h2-text">Rendelés állapotok</div >
+      <div id="orderStatesList"></div>  
+  </div>
+
+  <div class='logintokenslist-container' hidden>
+      <div class="h2-text">Bejelentkezési kulcsok</div >
+      <div id="loginTokensList"></div>
+  </div>
 
 
-    <div class="h2-text">Új felhasználó hozzáadása</div >
-    <div id="userRegisterBox">
+    <div class="h2-text" hidden>Új felhasználó hozzáadása</div>
+    <div id="userRegisterBox" hidden>
         <div>
           <label for="username">Username:</label>
           <input type="username" id="username" name="username" required>
@@ -50,11 +93,10 @@
         <button type="button" id="addNewUserButton">Register user</button>
     </div>
 
-    <div class="h2-text">Rangok</div >
-    <div id="rolesList"></div>
 
-    <div class="h2-text">Új rang hozzáadása</div >
-    <div id="newRoleBox">
+
+    <div class="h2-text" hidden>Új rang hozzáadása</div >
+    <div id="newRoleBox" hidden>
         <div>
           <label for="roleName">Name:</label>
           <input type="text" id="roleName" name="roleName" required>
@@ -74,11 +116,10 @@
         <button type="button" id="addNewRoleButton">Add new role</button>
     </div>
 
-    <div class="h2-text">Termékek</div >
-    <div id="productList"></div>
 
-    <div class="h2-text">Új termék hozzáadása</div >
-    <div id="newProductBox">
+
+    <div class="h2-text" hidden>Új termék hozzáadása</div>
+    <div id="newProductBox" hidden>
         <div>
           <label for="productName">Name:</label>
           <input type="text" id="productName" name="productName" required>
@@ -91,24 +132,14 @@
     </div>
 
 
-    <div class="h2-text">Asztalok</div >
-    <div id="tableList"></div>
-    <hr>
-
-    <div class="h2-text">Új asztal hozzáadása</div >
-    <div id="newProductBox">
+    <div class="h2-text" hidden>Új asztal hozzáadása</div>
+    <div id="newProductBox" hidden>
         <div>
           <label for="tableName">Name:</label>
           <input type="text" id="tableName" name="tableName" required>
         </div>
         <button type="button" id="addNewTableButton">Add new table</button>
     </div>
-
-    <div class="h2-text">Rendelések</div >
-    <div id="ordersList"></div>
-
-    <div class="h2-text">Rendelés állapotok</div >
-    <div id="orderStatesList"></div>
 
   </div>
 

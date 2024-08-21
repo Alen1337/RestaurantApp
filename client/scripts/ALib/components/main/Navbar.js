@@ -20,7 +20,6 @@ export function render() {
     out += "<br>"
     out += renderButton(adminPanelIcon, ELEMENT.NAV_ADMIN_PANEL_BUTTON)
     out += renderButton(logoutIcon, ELEMENT.NAV_LOGOUT_BUTTON)
-
     out += `</div>`
     outputElement.innerHTML = out
     setupButtons()
